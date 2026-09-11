@@ -31,14 +31,7 @@ const PROJECTS = [
     demoUrl: "https://libreservice-20-production.up.railway.app",
     codeUrl: "https://github.com/lemymba-hash/-libreservice-2.0-",
   },
-  {
-    file: "projet_3",
-    name: "Nom du projet",
-    description: "Description courte à compléter : contexte, objectif et résultat obtenu.",
-    tags: ["Techno 1", "Techno 2"],
-    demoUrl: "",
-    codeUrl: "",
-  },
+
 ];
 
 const FORMATION = [
