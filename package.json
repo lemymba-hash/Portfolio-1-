@@ -1,0 +1,9 @@
+{
+  "name": "portfolio-lemy-wannel",
+  "version": "1.0.0",
+  "description": "CV / portfolio personnel de MBA-OBAME EZEZENG Lemy-Wannel — site statique HTML/CSS/JS.",
+  "private": true,
+  "scripts": {
+    "start": "npx --yes live-server . --port=5500"
+  }
+}
