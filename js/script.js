@@ -19,7 +19,7 @@ const PROJECTS = [
     file: "projet_1",
     name: "Gestion et génération de bulletins scolaires",
     description: "Développé dans le cadre de la gestion scolaire d'un établissement, ce projet avait pour objectif d'automatiser la génération des bulletins et la gestion des liens d'accès aux résultats, avec une logique centralisée côté backend et une base de données MySQL. Résultat : une application fonctionnelle, actuellement en ligne et pouvant utilisée en conditions réelles.",
-    tags: [["JavaScript", "Backend", "MySQL"]],
+    tags: ["JavaScript", "Backend", "MySQL"],
     demoUrl: "https://bulletin-inptic.vercel.app/",
     codeUrl: "",
   },
@@ -201,24 +201,40 @@ function setupNav(){
       ex: une URL Formspree). Rien à intercepter ici : on laisse le
       navigateur gérer l'envoi et la redirection.
 ========================================================= */
-
 function setupContactForm(){
-  // Volontairement vide : comportement natif du formulaire conservé.
+  const form = document.getElementById("contact-form");
+  const note = document.getElementById("form-note");
+  const submitBtn = document.getElementById("form-submit");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Envoi en cours...";
+    note.textContent = "";
+    note.className = "form-note";
+
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { "Accept": "application/json" },
+      });
+
+      if (response.ok){
+        note.textContent = "Message envoyé avec succès. Merci, je reviens vers vous rapidement !";
+        note.className = "form-note is-success";
+        form.reset();
+      } else {
+        note.textContent = "L'envoi a échoué. Réessaie, ou écris-moi directement à lemymba@gmail.com.";
+        note.className = "form-note is-error";
+      }
+    } catch (err) {
+      note.textContent = "L'envoi a échoué. Réessaie, ou écris-moi directement à lemymba@gmail.com.";
+      note.className = "form-note is-error";
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Envoyer";
+    }
+  });
 }
-
-/* =========================================================
-   INIT
-========================================================= */
-
-document.addEventListener("DOMContentLoaded", () => {
-  renderSkills();
-  renderProjects();
-  renderTimeline("formation-timeline", FORMATION);
-  renderTimeline("experiences-timeline", EXPERIENCES);
-  renderCertifications();
-  typeTerminal();
-  observeSkills();
-  setupNav();
-  setupContactForm();
-  document.getElementById("footer-year").textContent = new Date().getFullYear();
-});
