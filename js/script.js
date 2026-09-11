@@ -130,7 +130,7 @@ function typeTerminal(){
     "class Developpeur:",
     "    nom = \"MBA-OBAME EZEZENG Lemy-Wannel\"",
     "    domaine = \"Genie Informatique\"",
-    "    competences = [\"Python/Django\", \"Java\", \"JavaScript\"]",
+    "    competences = [\"Python/\", \"Java\", \"JavaScript\"]",
     "",
     "    def objectif(self):",
     "        return \"Apprendre, pratiquer, construire des solutions utiles\"",
