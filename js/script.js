@@ -195,17 +195,15 @@ function setupNav(){
 }
 
 /* =========================================================
-   FORMULAIRE DE CONTACT (visuel uniquement pour l'instant)
+   FORMULAIRE DE CONTACT
+   -> Le formulaire s'envoie maintenant normalement vers le service
+      indiqué dans l'attribut "action" du <form> (voir index.html,
+      ex: une URL Formspree). Rien à intercepter ici : on laisse le
+      navigateur gérer l'envoi et la redirection.
 ========================================================= */
 
 function setupContactForm(){
-  const form = document.getElementById("contact-form");
-  const note = document.getElementById("form-note");
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    note.textContent = "Message prêt à être envoyé — connecte un service d'envoi (Formspree, EmailJS...) pour l'activer.";
-    form.reset();
-  });
+  // Volontairement vide : comportement natif du formulaire conservé.
 }
 
 /* =========================================================
